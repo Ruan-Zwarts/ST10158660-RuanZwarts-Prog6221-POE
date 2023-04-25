@@ -6,8 +6,5 @@ using System.Threading.Tasks;
 
 namespace ST10158660_RuanZwarts_Prog6221_POE
 {
-    internal class Ingredient
-    {
-        
-    }
+    
 }

@@ -50,7 +50,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
             }
         }
 
-        public void Reset()           //Adds the reset dunction so the recipe can be reset
+        public void ResetQuantity()           //Adds the reset dunction so the recipe can be reset
         {
             foreach (IngredientList ingredient in ingredients)
             {
@@ -72,11 +72,11 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
         public string Unit { get; set; }
         private double originalQuantity;
 
-        public IngredientList(string name, double quantity, string unitOfMeasure)
+        public IngredientList(string name, double quantity, string unit)
         {
             Name = name;
             Quantity = quantity;
-            Unit = unitOfMeasure;
+            Unit = unit;
             originalQuantity = quantity;
         }
 
@@ -106,9 +106,9 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
                     double quantity = Convert.ToDouble(Console.ReadLine());
 
                     Console.WriteLine("Enter the unit of measurement of ingredient {0}:", i + 1);   //giving the unit of measurement of the ingredient above
-                    string unitOfMeasure = Console.ReadLine();
+                    string unit = Console.ReadLine();
 
-                    recipe.AddIngredient(new IngredientList(name, quantity, unitOfMeasure));
+                    recipe.AddIngredient(new IngredientList(name, quantity, unit));
                 }
 
                 Console.WriteLine("Enter the number of steps:");            //entering the amount of steps needed to make the recipe
@@ -137,7 +137,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
                     }
                     else if (input == "2")  //gives the user the ability to reset the recipe quantities
                     {
-                        recipe.Reset();
+                        recipe.ResetQuantity();
                         recipe.DisplayRecipe();
                     }
                     else if (input == "3")  //gives the user the ability to clear the recipe
