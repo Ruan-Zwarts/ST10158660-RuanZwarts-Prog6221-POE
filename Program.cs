@@ -1,33 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ST10158660_RuanZwarts_Prog6221_POE
 {
-    class NewRecipe             //Holds all the mothods for the program to complete
+    class Recipe        //Holds all the mothods for the program to complete
     {
-        private List<IngredientList> ingredients;
+        private List<IngredientList> ingredients;       
         private List<string> steps;
 
-        public NewRecipe()          //Sets up the list for the data to be stored
+        public Recipe()     //Sets up the list for the data to be stored
         {
             ingredients = new List<IngredientList>();
             steps = new List<string>();
         }
 
-        public void AddIngredient(IngredientList ingredient)    //Method for adding ingredients
+        public void AddIngredient(IngredientList ingredient)        //Method for adding ingredients
         {
             ingredients.Add(ingredient);
         }
 
-        public void AddSteps(string step)           //Method for adding the amount of steps
+        public void AddSteps(string step)       //Method for adding the amount of steps
         {
             steps.Add(step);
         }
 
-        public void DisplayRecipe()             //Adds the display function so the user is able to see the recipe
+        public void DisplayRecipe()         //Adds the display function so the user is able to see the recipe
         {
             Console.WriteLine("Ingredients:");
             foreach (IngredientList ingredient in ingredients)
@@ -42,7 +43,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
             }
         }
 
-        public void ScaleRecipe(double factor)      // Adds the scale function for scaling the recipe
+        public void ScaleRecipe(double factor)          // Adds the scale function for scaling the recipe
         {
             foreach (IngredientList ingredient in ingredients)
             {
@@ -50,7 +51,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
             }
         }
 
-        public void ResetQuantity()           //Adds the reset dunction so the recipe can be reset
+        public void ResetQuantities()           //Adds the reset function so the recipe can be reset
         {
             foreach (IngredientList ingredient in ingredients)
             {
@@ -80,29 +81,30 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
             originalQuantity = quantity;
         }
 
-        public void ResetQuantity() // Allows for the resetting of the quantity in the recipe to its orginal quantity
+        public void ResetQuantity()             // Allows for the resetting of the quantity in the recipe to its orginal quantity
         {
             Quantity = originalQuantity;
         }
     }
 
-    class Program
+    class Program               
     {
-        static void Main(string[] args)     //Main method to put everything together
+        static void Main(string[] args)         //Main method to put everything together
         {
-            NewRecipe recipe = new NewRecipe();
+            Recipe recipe = new Recipe();
 
             while (true)
             {
-                Console.WriteLine("Enter the number of ingredients:");      //entering the number of ingredients
-                int numIngredients = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the number of ingredients:");              //entering the number of ingredients
+
+                int numIngredients = Convert.ToInt32(Console.ReadLine()); 
 
                 for (int i = 0; i < numIngredients; i++)
                 {
-                    Console.WriteLine("Enter the name of ingredient {0}:", i + 1);      //entering the name of the ingredient, eg Eggs/Flour/Milk,etc
+                    Console.WriteLine("Enter the name of ingredient {0}:", i + 1);          //entering the name of the ingredient, eg Eggs/Flour/Milk,etc
                     string name = Console.ReadLine();
 
-                    Console.WriteLine("Enter the quantity of ingredient {0}:", i + 1);  //entering the amount of this ingredient
+                    Console.WriteLine("Enter the quantity of ingredient {0}:", i + 1);      //entering the amount of this ingredient
                     double quantity = Convert.ToDouble(Console.ReadLine());
 
                     Console.WriteLine("Enter the unit of measurement of ingredient {0}:", i + 1);   //giving the unit of measurement of the ingredient above
@@ -111,7 +113,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
                     recipe.AddIngredient(new IngredientList(name, quantity, unit));
                 }
 
-                Console.WriteLine("Enter the number of steps:");            //entering the amount of steps needed to make the recipe
+                Console.WriteLine("Enter the number of steps:");        //entering the amount of steps needed to make the recipe
                 int numSteps = Convert.ToInt32(Console.ReadLine());
 
                 for (int i = 0; i < numSteps; i++)
@@ -128,26 +130,26 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
                     Console.WriteLine("Enter '1' to scale the recipe, '2' to reset quantities, '3' to clear recipe, or press anything else to exit:");
                     string input = Console.ReadLine();
 
-                    if (input == "1")       //gives the user the ability to scale the order
+                    if (input == "1")           //gives the user the ability to scale the order
                     {
                         Console.WriteLine("Enter the scaling factor (0.5, 2, or 3):");
                         double factor = Convert.ToDouble(Console.ReadLine());
                         recipe.ScaleRecipe(factor);
                         recipe.DisplayRecipe();
                     }
-                    else if (input == "2")  //gives the user the ability to reset the recipe quantities
+                    else if (input == "2")      //gives the user the ability to reset the recipe quantities
                     {
-                        recipe.ResetQuantity();
+                        recipe.ResetQuantities();
                         recipe.DisplayRecipe();
                     }
-                    else if (input == "3")  //gives the user the ability to clear the recipe
+                    else if (input == "3")      //gives the user the ability to clear the recipe
                     {
                         recipe.ClearRecipe();
                         break;
                     }
-                    else
+                    else                        //Gives the system a way to exit when told to
                     {
-
+                        Environment.Exit(0);    
                     }
                 }
             }
