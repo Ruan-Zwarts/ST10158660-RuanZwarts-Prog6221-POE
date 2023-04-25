@@ -17,7 +17,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
             steps = new List<string>();
         }
 
-        public void AddIngredient(Ingredient ingredient)
+        public void AddIngredients(Ingredient ingredient)
         {
             ingredients.Add(ingredient);
         }
@@ -96,7 +96,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
 
 
 
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
@@ -118,7 +118,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
                     Console.WriteLine("Enter the unit of measurement of ingredient {0}:", i + 1);
                     string unit = Console.ReadLine();
 
-                    recipe.AddIngredient(new Ingredient (name, quantity, unit));
+                    recipe.AddIngredients (new Ingredient (name, quantity, unit));
                 }
 
                 Console.WriteLine("Enter the number of steps:");
@@ -164,7 +164,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
 
                 }
             }
-            Console.ReadKey();
+            
         }
         
     }
