@@ -58,14 +58,14 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
             }
         }
 
-        public void ClearRecipe()
+        public void ClearRecipe()       //Adds the clear recipe method
         {
             ingredients.Clear();
             steps.Clear();
         }
     }
 
-    class IngredientList
+    class IngredientList        //The ingredients class with all the getters and setters, as well as havign the imprtant names, quantities, units of measurement and the original quantity so be able to go back tp the original recipe
     {
         public string Name { get; set; }
         public double Quantity { get; set; }
@@ -80,7 +80,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
             originalQuantity = quantity;
         }
 
-        public void ResetQuantity()
+        public void ResetQuantity() // Allows for the resetting of the quantity in the recipe to its orginal quantity
         {
             Quantity = originalQuantity;
         }
