@@ -10,9 +10,9 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
     {
         static void Main(string[] args)
         {
-            Recipe recipe = new Recipe();
+            RecipeList recipe = new RecipeList();
 
-            List <Ingredient> Recipe1 = new List <Ingredient>();
+            List <IngredientList> RecipeList = new List <IngredientList>();
 
             while (true)
             {
@@ -30,10 +30,12 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
                     Console.WriteLine("Enter the unit of measurement of ingredient {0}:", i + 1);
                     string unit = Console.ReadLine();
 
-
+                    //
                     //Program Ingredient = new Program; 
 
-                    recipe.AddIngredients (new Recipe.Ingredient (name, quantity, unit));
+                    //Recipe.AddIngredients (new RecipeList.RuanIngredients (name, quantity, unit));
+
+                    recipe.AddIngredients(new IngredientsList (name, quantity, unit));
                 }
                 
                 Console.WriteLine("Enter the number of steps:");
