@@ -22,12 +22,12 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
             ingredients.Add(ingredient);
         }
 
-        public void AddSteps(string step)
+        public void AddSteps(string step)           //Method for adding the amount of steps
         {
             steps.Add(step);
         }
 
-        public void DisplayRecipe()
+        public void DisplayRecipe()             //Adds the display function so the user is able to see the recipe
         {
             Console.WriteLine("Ingredients:");
             foreach (IngredientList ingredient in ingredients)
@@ -42,7 +42,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
             }
         }
 
-        public void ScaleRecipe(double factor)
+        public void ScaleRecipe(double factor)      // Adds the scale function for scaling the recipe
         {
             foreach (IngredientList ingredient in ingredients)
             {
@@ -50,7 +50,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
             }
         }
 
-        public void ResetQuantities()
+        public void Reset()           //Adds the reset dunction so the recipe can be reset
         {
             foreach (IngredientList ingredient in ingredients)
             {
@@ -137,7 +137,7 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
                     }
                     else if (input == "2")
                     {
-                        recipe.ResetQuantities();
+                        recipe.Reset();
                         recipe.DisplayRecipe();
                     }
                     else if (input == "3")
