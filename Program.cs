@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace ST10158660_RuanZwarts_Prog6221_POE
 {
-    class NewRecipe
+    class NewRecipe             //Holds all the mothods for the program to complete
     {
         private List<IngredientList> ingredients;
         private List<string> steps;
 
-        public NewRecipe()
+        public NewRecipe()          //Sets up the list for the data to be stored
         {
             ingredients = new List<IngredientList>();
             steps = new List<string>();
         }
 
-        public void AddIngredient(IngredientList ingredient)
+        public void AddIngredient(IngredientList ingredient)    //Method for adding ingredients
         {
             ingredients.Add(ingredient);
         }
@@ -72,11 +72,11 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
         public string Unit { get; set; }
         private double originalQuantity;
 
-        public IngredientList(string name, double quantity, string unit)
+        public IngredientList(string name, double quantity, string unitOfMeasure)
         {
             Name = name;
             Quantity = quantity;
-            Unit = unit;
+            Unit = unitOfMeasure;
             originalQuantity = quantity;
         }
 
@@ -106,9 +106,9 @@ namespace ST10158660_RuanZwarts_Prog6221_POE
                     double quantity = Convert.ToDouble(Console.ReadLine());
 
                     Console.WriteLine("Enter the unit of measurement of ingredient {0}:", i + 1);
-                    string unit = Console.ReadLine();
+                    string unitOfMeasure = Console.ReadLine();
 
-                    recipe.AddIngredient(new IngredientList(name, quantity, unit));
+                    recipe.AddIngredient(new IngredientList(name, quantity, unitOfMeasure));
                 }
 
                 Console.WriteLine("Enter the number of steps:");
